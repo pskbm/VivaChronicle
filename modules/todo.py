@@ -21,3 +21,25 @@ class ToDo:
         df = pd.DataFrame(data)
         df['due'] = pd.to_datetime(df['due'])
         return df[df['username'] == self.username]
+    
+     
+
+    # st.markdown(f'''username: **{st.session_state.username}**''')
+    # st.markdown(
+    #     '''Except for username column, others can be edited but table cannot be saved.
+    #     This is only a demo to check that the username who logged in is the same as the
+    #     username shown in this table.
+    #     ''')
+
+    # todo = ToDo(st.session_state.username)
+    # st.data_editor(
+    #     todo.get_todo(),
+    #     column_config={
+    #         'due': st.column_config.DateColumn(format="YYYY-MM-DD"),
+    #         'username': st.column_config.TextColumn(disabled=True),
+    #         'category': st.column_config.SelectboxColumn(options=['personal', 'work', 'others']),
+    #     },
+    #     use_container_width=True,
+    #     hide_index=True,
+    #     key='data_editor_k'
+    # )
