@@ -1,5 +1,2 @@
 streamlit
 streamlit-authenticator
-streamlit-antd-components
-openai
-loguru
