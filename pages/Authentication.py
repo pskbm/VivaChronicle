@@ -10,17 +10,13 @@ authenticator = stauth.Authenticate(
             st.secrets['preauthorized']
         )
     
-tab1, tab2 = st.tabs(['Login', 'Register'])
+tab1, tab2, tab3 = st.tabs(['Login', 'Register', 'Logout'])
 
 with tab1:
     authenticator.login('Login', 'main')
 
     if st.session_state["authentication_status"]:
-        authenticator.logout('Logout', 'sidebar', key='unique_key')
-        st.sidebar.markdown(f'''
-            Username: **{st.session_state["username"]}**  
-            Name: **{st.session_state["name"]}**
-            ''')
+        st.write(f'Username: {st.session_state.username}')
 
     elif st.session_state["authentication_status"] is None:
         st.warning('Please enter your username and password')
@@ -35,4 +31,12 @@ with tab2:
             pass  # st.success('User registered successfully')
     except Exception as e:
         st.error(e)
-        
+
+with tab3:
+    if st.session_state["authentication_status"]:
+        authenticator.logout('Logout', 'main', key='unique_key')
+        st.markdown(f'''
+            Username: **{st.session_state["username"]}**  
+            Name: **{st.session_state["name"]}**
+            ''')
+
