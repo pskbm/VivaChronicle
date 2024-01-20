@@ -1,9 +1,11 @@
+import sys
 import openai
 import streamlit as st
 import streamlit_authenticator as stauth
 import streamlit_antd_components as sac
 from modules.home import CONTENT
 from modules.todo import ToDo
+from loguru import logger
 
 
 if 'myopenai_key' not in st.session_state:
@@ -142,6 +144,7 @@ def main():
                     st.markdown(message["content"])
 
             if prompt := st.chat_input("What is up?"):
+                logger.debug(f'user message: {prompt}')
                 st.session_state.messages.append({"role": "user", "content": prompt})
                 with st.chat_message("user"):
                     st.markdown(prompt)
@@ -157,15 +160,20 @@ def main():
                         )
                     except openai.APIConnectionError as err:
                         st.error('Please enter your openai key in the sidebar.')
+                        logger.error('Please enter your openai key in the sidebar.')
                         st.stop()
                     except Exception as err:
                         st.error(f'unexpected error: {err}')
+                        logger.error(f'unexpected error: {err}')
                         st.stop()
                     else:
                         for part in response:
+                            logger.debug(f'part response: {part.choices[0].delta.content}')
                             full_response += (part.choices[0].delta.content or "")
                             message_placeholder.markdown(full_response + "▌")
                         message_placeholder.markdown(full_response)
+                        logger.debug(f'fullresponse: {full_response}')
+                        logger.debug(f'fullresponse KB size: {sys.getsizeof(full_response)/1024}')
                 st.session_state.messages.append({"role": "assistant", "content": full_response})
 
         else:
