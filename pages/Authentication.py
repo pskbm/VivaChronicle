@@ -1,14 +1,8 @@
 import streamlit as st
-import streamlit_authenticator as stauth
+from modules.auth import get_auth
 
 
-authenticator = stauth.Authenticate(
-            dict(st.secrets['credentials']),
-            st.secrets['cookie']['name'],
-            st.secrets['cookie']['key'],
-            st.secrets['cookie']['expiry_days'],
-            st.secrets['preauthorized']
-        )
+authenticator = get_auth()
 
 tab1, tab2, tab3 = st.tabs(['Login', 'Register', 'Logout'])
 
