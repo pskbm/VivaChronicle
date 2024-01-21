@@ -12,12 +12,14 @@ if st.session_state.authentication_status is None:
 
 
 data = {
-    'username': ['alan']*5 + ['boyet']*5,
-    'desc': ['Todo1', 'Todo2', 'Todo3', 'Todo4', 'Todo5', 'Todo6', 'Todo7', 'Todo8', 'Todo9', 'Todo10'],
+    'username': ['alan']*5 + ['boyet']*5 + ['paul']*5,
+    'desc': ['Todo1', 'Todo2', 'Todo3', 'Todo4', 'Todo5', 'Todo6', 'Todo7', 'Todo8', 'Todo9', 'Todo10', 'Todo1', 'Todo2', 'Todo3', 'Todo4', 'Todo5'],
     'due': ['2024-01-10', '2024-01-15', '2024-01-20', '2024-01-25', '2024-02-01', 
-            '2024-02-05', '2024-02-10', '2024-02-15', '2024-02-20', '2024-02-25'],
+            '2024-02-05', '2024-02-10', '2024-02-15', '2024-02-20', '2024-02-25',
+            '2024-03-05', '2024-02-12', '2024-02-15', '2024-02-17', '2024-03-25'],
     'category': ['personal', 'work', 'others', 'personal', 'work', 
-                 'others', 'personal', 'work', 'others', 'personal']
+                 'others', 'personal', 'work', 'others', 'personal',
+                 'work', 'work', 'others', 'personal', 'others',]
 }
 
 st.header('Todo')
