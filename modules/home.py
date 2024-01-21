@@ -1,11 +1,12 @@
-"""Suppports the home page"""
+"""Suppports home page."""
 
 
-CONTENT = '''A sample streamlit productivity app that uses authenticator component.
+CONTENT = '''A sample [streamlit](https://streamlit.io/) productivity app that
+uses [authenticator](https://github.com/mkhorasani/Streamlit-Authenticator) component.
 
 ### Features
 
 * Using streamlit's multi-page design.
 * It has a sample todo page. The edited table cannot be saved for now.
-* It has a password random generator. Anyone can access this feature.
+* It has a password random generator that anyone can access without the need for logging in.
 '''
