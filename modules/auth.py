@@ -19,7 +19,7 @@ def get_login(authenticator):
     authenticator.login('Login', 'main')
 
     if st.session_state["authentication_status"]:
-        st.write(f'Username: {st.session_state.username}')
+        st.write(f'Logged username: **{st.session_state.username}**')
 
     elif st.session_state["authentication_status"] is None:
         st.warning('Please enter your username and password')
