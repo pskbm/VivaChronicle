@@ -1,6 +1,5 @@
 import streamlit as st
 from modules.home import CONTENT
-from modules.auth import get_auth
 
 
 st.set_page_config(
@@ -22,7 +21,8 @@ def main():
     st.title('Home')
 
     if st.session_state.authentication_status is None:
-        st.error('Goto Authentication page to update login status.')
+        st.error('''Goto Authentication page to log in or
+                    update status and see the contents of this page.''')
 
 
     if st.session_state["authentication_status"]:
