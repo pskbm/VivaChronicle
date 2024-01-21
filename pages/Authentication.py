@@ -1,5 +1,8 @@
+"""Manages user authentication."""
+
+
 import streamlit as st
-from modules.auth import get_auth, get_login, get_register
+from modules.auth import get_auth, get_login, get_register, get_logout
 
 
 st.title('Authentication')
@@ -17,9 +20,4 @@ with tab2:
 
 with tab3:
     if st.session_state["authentication_status"]:
-        authenticator.logout('Logout', 'main', key='unique_key')
-        st.markdown(f'''
-            Username: **{st.session_state["username"]}**  
-            Name: **{st.session_state["name"]}**
-            ''')
-
+        get_logout(authenticator)
