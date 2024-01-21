@@ -1,5 +1,5 @@
 import streamlit as st
-from modules.auth import get_auth
+from modules.auth import get_auth, get_login, get_register
 
 
 authenticator = get_auth()
@@ -9,24 +9,11 @@ st.title('Authentication')
 tab1, tab2, tab3 = st.tabs(['Login', 'Register', 'Logout'])
 
 with tab1:
-    authenticator.login('Login', 'main')
-
-    if st.session_state["authentication_status"]:
-        st.write(f'Username: {st.session_state.username}')
-
-    elif st.session_state["authentication_status"] is None:
-        st.warning('Please enter your username and password')
-
-    else:
-        st.error('Username/password is incorrect')
+    get_login(authenticator)
 
 with tab2:
     st.error('This is not supported yet.')
-    try:
-        if authenticator.register_user('Register user', preauthorization=False):
-            pass  # st.success('User registered successfully')
-    except Exception as e:
-        st.error(e)
+    get_register(authenticator)
 
 with tab3:
     if st.session_state["authentication_status"]:
