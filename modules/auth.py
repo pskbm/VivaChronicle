@@ -34,3 +34,11 @@ def get_register(authenticator):
             pass  # st.success('User registered successfully')
     except Exception as e:
         st.error(e)
+
+
+def get_logout(authenticator):
+    authenticator.logout('Logout', 'main', key='unique_key')
+    st.markdown(f'''
+        Username: **{st.session_state["username"]}**  
+        Name: **{st.session_state["name"]}**
+        ''')
