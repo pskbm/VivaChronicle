@@ -1,3 +1,6 @@
+"""Supports password page."""
+
+
 import streamlit as st
 
 
