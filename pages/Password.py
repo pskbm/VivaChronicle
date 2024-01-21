@@ -1,6 +1,7 @@
 import streamlit as st
 from passwordgenerator import pwgenerator
 import pyperclip
+from modules.password import spacer
 
 
 if 'pw' not in st.session_state:
@@ -14,14 +15,14 @@ def gen_pass_cb():
     st.session_state.pw = pwgenerator.generate()
 
 
-def gen_pass_copy_cb():
+def pass_copy_cb():
     pyperclip.copy(st.session_state.pw)
 
 
 cols = st.columns([1, 4, 2])
 
 with cols[0]:
-    st.write('<div style="height: 29px;"></div>', unsafe_allow_html=True)
+    spacer(height=29)
     st.button('Generate', type='primary', on_click=gen_pass_cb)
 
 with cols[1]:
@@ -33,6 +34,6 @@ with cols[1]:
     )
 
 with cols[2]:
-    st.write('<div style="height: 29px;"></div>', unsafe_allow_html=True)
-    st.button('Copy', type='secondary', on_click=gen_pass_copy_cb)
+    spacer(height=29)
+    st.button('Copy', type='secondary', on_click=pass_copy_cb)
 
