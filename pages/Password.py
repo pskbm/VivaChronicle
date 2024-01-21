@@ -1,7 +1,7 @@
 import streamlit as st
 from passwordgenerator import pwgenerator
 import pyperclip
-from modules.password import spacer
+from modules.password import spacer, copy_to_clipboard
 
 
 if 'pw' not in st.session_state:
@@ -13,8 +13,8 @@ def gen_pass_cb():
 
 
 def pass_copy_cb():
-    pyperclip.copy(st.session_state.pw)
-
+    """Copy password to clipboard."""
+    copy_to_clipboard(st.session_state.pw)
 
 st.title('Password Generator')
 
