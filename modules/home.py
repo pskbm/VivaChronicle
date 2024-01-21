@@ -1,4 +1,4 @@
-"""Suppports the main.py file"""
+"""Suppports the home page"""
 
 
 CONTENT = '''A sample streamlit productivity app that uses authenticator component.
