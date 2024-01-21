@@ -4,6 +4,8 @@ from modules.auth import get_auth
 
 authenticator = get_auth()
 
+st.title('Authentication')
+
 tab1, tab2, tab3 = st.tabs(['Login', 'Register', 'Logout'])
 
 with tab1:
