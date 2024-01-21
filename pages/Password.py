@@ -19,6 +19,7 @@ def pass_copy_cb():
     pyperclip.copy(st.session_state.pw)
 
 
+# Creates 3 widgets along the row.
 cols = st.columns([1, 4, 2])
 
 with cols[0]:
