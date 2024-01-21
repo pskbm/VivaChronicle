@@ -9,7 +9,7 @@ authenticator = stauth.Authenticate(
             st.secrets['cookie']['expiry_days'],
             st.secrets['preauthorized']
         )
-    
+
 tab1, tab2, tab3 = st.tabs(['Login', 'Register', 'Logout'])
 
 with tab1:
