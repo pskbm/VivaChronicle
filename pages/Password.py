@@ -8,9 +8,6 @@ if 'pw' not in st.session_state:
     st.session_state.pw = pwgenerator.generate()
 
 
-st.title('Password Generator')
-
-
 def gen_pass_cb():
     st.session_state.pw = pwgenerator.generate()
 
@@ -18,6 +15,8 @@ def gen_pass_cb():
 def pass_copy_cb():
     pyperclip.copy(st.session_state.pw)
 
+
+st.title('Password Generator')
 
 # Creates 3 widgets along the row.
 cols = st.columns([1, 4, 2])
