@@ -3,7 +3,7 @@ from modules.home import CONTENT
 
 
 st.set_page_config(
-    page_title='Producer',
+    page_title='VivaChronicle',
     layout='centered',
     initial_sidebar_state='expanded',
     page_icon=':art:',
