@@ -2,9 +2,9 @@ import streamlit as st
 from modules.auth import get_auth, get_login, get_register
 
 
-authenticator = get_auth()
-
 st.title('Authentication')
+
+authenticator = get_auth()
 
 tab1, tab2, tab3 = st.tabs(['Login', 'Register', 'Logout'])
 
