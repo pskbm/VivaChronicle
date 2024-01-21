@@ -1,4 +1,4 @@
-"""Suppports the home section in the main.py file"""
+"""Suppports the main.py file"""
 
 
 CONTENT = '''A sample streamlit productivity app that uses authenticator component.
@@ -6,5 +6,5 @@ CONTENT = '''A sample streamlit productivity app that uses authenticator compone
 ### Features
 
 * Using streamlit's multi-page design.
-* It has a sample todo page. It cannot be saved for now.
+* It has a sample todo page. The edited table cannot be saved for now.
 '''
