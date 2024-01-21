@@ -13,8 +13,8 @@ def gen_pass_cb():
 
 st.title('Password Generator')
 
-# Creates 3 widgets along the row.
-cols = st.columns([1, 6])
+# Creates 2 widgets along the row.
+cols = st.columns([1, 5])
 
 with cols[0]:
     spacer(height=29)
