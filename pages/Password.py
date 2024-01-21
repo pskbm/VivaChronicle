@@ -21,6 +21,8 @@ def gen_pass_cb():
 
 st.title('Password Generator')
 
+st.markdown('Generates password randomly.')
+
 # Creates 2 widgets along the row.
 cols = st.columns([1, 5])
 
