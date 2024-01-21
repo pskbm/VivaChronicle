@@ -1,3 +1,10 @@
+"""Manages password.
+
+The password generator uses this library:
+    https://github.com/gabfl/password-generator-py/
+"""
+
+
 import streamlit as st
 from passwordgenerator import pwgenerator
 from modules.password import spacer
@@ -8,6 +15,7 @@ if 'pw' not in st.session_state:
 
 
 def gen_pass_cb():
+    """Generates random password."""
     st.session_state.pw = pwgenerator.generate()
 
 
