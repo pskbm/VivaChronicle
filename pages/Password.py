@@ -1,7 +1,6 @@
 import streamlit as st
 from passwordgenerator import pwgenerator
-import pyperclip
-from modules.password import spacer, copy_to_clipboard
+from modules.password import spacer
 
 
 if 'pw' not in st.session_state:
@@ -12,14 +11,10 @@ def gen_pass_cb():
     st.session_state.pw = pwgenerator.generate()
 
 
-def pass_copy_cb():
-    """Copy password to clipboard."""
-    copy_to_clipboard(st.session_state.pw)
-
 st.title('Password Generator')
 
 # Creates 3 widgets along the row.
-cols = st.columns([1, 4, 2])
+cols = st.columns([1, 6])
 
 with cols[0]:
     spacer(height=29)
@@ -32,8 +27,4 @@ with cols[1]:
         key='rpw_k',
         label_visibility='hidden'
     )
-
-with cols[2]:
-    spacer(height=29)
-    st.button('Copy', type='secondary', on_click=pass_copy_cb)
 
