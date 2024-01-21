@@ -1,2 +1,2 @@
-# stauth-chat
-A streamlit app using authenticator, antd ui and chat
+# Viva Chronicle
+A streamlit multi-page app using authenticator compoinent.
