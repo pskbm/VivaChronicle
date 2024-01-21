@@ -37,5 +37,6 @@ def get_register(authenticator):
 
 
 def get_logout(authenticator):
+    st.markdown(f'''Welcome **{st.session_state["name"]}** 	:thumbsup:''')
     authenticator.logout('Logout', 'main', key='unique_key')
-    st.markdown(f'''Name: **{st.session_state["name"]}**''')
+    
