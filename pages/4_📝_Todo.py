@@ -3,6 +3,7 @@
 
 import streamlit as st
 from modules.todo import Todo
+from modules.auth import get_auth, get_login
 
 
 if 'authentication_status' not in st.session_state:
@@ -11,14 +12,12 @@ if 'authentication_status' not in st.session_state:
 
 st.title('Todo')
 
-if st.session_state.authentication_status is None:
-    st.error('''Goto Authentication page to log in or
-                update status and see the contents of this page.''')
+authenticator = get_auth()
+get_login(authenticator)
 
-if st.session_state.authentication_status:
+if st.session_state.authentication_status:    
     st.write(f'username: **{st.session_state.username}**')
 
     todo = Todo(st.session_state.username)
     todo.get_description()
     todo.get_table()
-
