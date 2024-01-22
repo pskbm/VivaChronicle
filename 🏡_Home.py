@@ -1,6 +1,5 @@
 import streamlit as st
 from modules.home import CONTENT
-from modules.auth import get_auth, get_login
 
 
 st.set_page_config(
@@ -14,18 +13,9 @@ st.set_page_config(
 )
 
 
-if 'authentication_status' not in st.session_state:
-    st.session_state.authentication_status = None
-
-
 def main():
     st.title('Home')
-
-    authenticator = get_auth()
-    get_login(authenticator)
-
-    if st.session_state.authentication_status:        
-        st.markdown(CONTENT)
+    st.markdown(CONTENT)
 
 
 if __name__ == '__main__':
