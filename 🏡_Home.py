@@ -1,5 +1,6 @@
 import streamlit as st
 from modules.home import CONTENT
+from modules.auth import get_auth, get_login
 
 
 st.set_page_config(
@@ -20,12 +21,10 @@ if 'authentication_status' not in st.session_state:
 def main():
     st.title('Home')
 
-    if st.session_state.authentication_status is None:
-        st.error('''Goto Authentication page to log in or
-                    update status and see the contents of this page.''')
+    authenticator = get_auth()
+    get_login(authenticator)
 
-
-    if st.session_state["authentication_status"]:
+    if st.session_state.authentication_status:        
         st.markdown(CONTENT)
 
 
