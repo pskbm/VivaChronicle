@@ -12,8 +12,10 @@ if 'authentication_status' not in st.session_state:
 
 st.title('Todo')
 
-authenticator = get_auth()
-get_login(authenticator)
+if 'authentication_status' not in st.session_state or st.session_state.authentication_status is None:
+    st.error('Log in to access the Todo organizer')
+    authenticator = get_auth()
+    get_login(authenticator)
 
 if st.session_state.authentication_status:    
     st.write(f'username: **{st.session_state.username}**')
