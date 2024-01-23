@@ -15,7 +15,7 @@ with tab1:
     get_login(authenticator)
 
 with tab2:
-    st.error('This is not supported yet.')
+    # st.error('This is not supported yet.')
     get_register(authenticator)
 
 with tab3:
