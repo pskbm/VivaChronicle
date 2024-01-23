@@ -21,8 +21,11 @@ with st.container(border=True):
     st.markdown('Generates password randomly.')
     get_password_generator()
 
-authenticator = get_auth()
-get_login(authenticator)
+
+if 'authentication_status' not in st.session_state or st.session_state.authentication_status is None:
+    st.error('Log in to access the password manager')
+    authenticator = get_auth()
+    get_login(authenticator)
 
 if st.session_state.authentication_status:
     with st.container(border=True):
