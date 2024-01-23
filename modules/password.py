@@ -14,6 +14,19 @@ def spacer(height: int = 30):
 if 'pw' not in st.session_state:
     st.session_state.pw = pwgenerator.generate()
 
+if 'secret_data' not in st.session_state:
+    st.session_state.secret_data = []
+
+
+def save_pass_cb():
+    st.session_state.secret_data.append(
+        {
+            'Name': st.session_state.pass_name,
+            'Username': st.session_state.pass_username,
+            'Password': st.session_state.pass_password
+        }
+    )
+
 
 def gen_pass_cb():
     """Generates random password."""
@@ -37,23 +50,21 @@ def get_password_generator():
 
 
 def get_credential_vault():
-    df = pd.DataFrame(
-        {
-            'Name': ['Gregg Mesa', 'Linda Saturan'],
-            'Username': ['dami', 'sikat'],
-            'Email': ['greggmesa@gmail.com', 'lindasat@gmail.com'],
-            'Url': ['https://streamlit.io/', 'https://www.facebook.com/'],
-            'Password': ['Dummies-Chasers.Recoded:594', 'Henna%474-Gulfs;Quickens']
-        }
-    )
+    holder = st.empty()
 
-    st.data_editor(
-        df,
-        column_config={
-            'url': st.column_config.LinkColumn(),
-            # 'username': st.column_config.TextColumn(disabled=True),
-            # 'category': st.column_config.SelectboxColumn(options=['personal', 'work', 'others']),
-        },
-        use_container_width=True,
-        hide_index=True
-    )
+    # Input form
+    with st.expander('Input Form', expanded=False):
+        with st.form('form_password'):
+            st.text_input('Name', key='pass_name')
+            st.text_input('Username', key='pass_username')
+            st.text_input('Password', key='pass_password')
+            st.form_submit_button('Save', on_click=save_pass_cb)
+
+    if 'secret_data' in st.session_state:
+        df = pd.DataFrame(st.session_state.secret_data)
+
+        holder.data_editor(
+            df,
+            use_container_width=True,
+            hide_index=True
+        )

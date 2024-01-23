@@ -21,7 +21,7 @@ if 'pw' not in st.session_state:
 def main():
     st.title('Password Safe')
 
-    tab1, tab2 = st.tabs(['Password Generator', 'Password Manager'])
+    tab1, tab2 = st.tabs(['Generator', 'Manager'])
 
     # Free
     with tab1:
@@ -38,8 +38,7 @@ def main():
             
         if st.session_state.authentication_status:
             with st.container(border=True):
-                st.subheader('Credential Vault')
-                st.markdown('Store credentials.')
+                st.subheader('Secret Vault')
                 get_credential_vault()
 
 
