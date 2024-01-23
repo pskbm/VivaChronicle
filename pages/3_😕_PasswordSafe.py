@@ -17,20 +17,31 @@ if 'authentication_status' not in st.session_state:
 if 'pw' not in st.session_state:
     st.session_state.pw = pwgenerator.generate()
 
-st.title('Password Safe')
 
-with st.container(border=True):
-    st.subheader('Password Generator')
-    st.markdown('Generates password randomly.')
-    get_password_generator()
+def main():
+    st.title('Password Safe')
+
+    tab1, tab2 = st.tabs(['Password Generator', 'Password Manager'])
+
+    # Free
+    with tab1:
+        with st.container(border=True):
+            st.subheader('Password Generator')
+            st.markdown('Generates password randomly.')
+            get_password_generator()
+
+    # Needs Login
+    with tab2:
+        if st.session_state.authentication_status is None:
+            authenticator = get_auth()
+            get_login(authenticator)
+            
+        if st.session_state.authentication_status:
+            with st.container(border=True):
+                st.subheader('Credential Vault')
+                st.markdown('Store credentials.')
+                get_credential_vault()
 
 
-if st.session_state.authentication_status is None:
-    authenticator = get_auth()
-    get_login(authenticator)
-
-if st.session_state.authentication_status:
-    with st.container(border=True):
-        st.subheader('Credential Vault')
-        st.markdown('Store credentials.')
-        get_credential_vault()
+if __name__ == '__main__':
+    main()
