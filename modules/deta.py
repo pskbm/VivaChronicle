@@ -1,4 +1,7 @@
-"""Manages Deta space drive integration."""
+"""Manages Deta space drive.
+
+Saves config.yaml in Deta drive.
+"""
 
 
 import yaml
@@ -31,3 +34,9 @@ def get_config_from_deta():
     response = drive.get(CONFIG_FN)
     content = response.read()
     return yaml.load(content, Loader=SafeLoader)
+
+
+def save_config_to_deta(config):
+    config_ref = dump_dict_to_yaml_stringio(config)
+    drive = init_deta_drive()
+    drive.put(CONFIG_FN, data=config_ref)
