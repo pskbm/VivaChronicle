@@ -9,6 +9,6 @@ users info are currently hardcoded in the secret toml file in the cloud.
 
 * Using streamlit's multi-page design.
 * It has a todo page.
-* It has a password page to stores credentials and password generator.
+* It has a password page to store credentials and password generator.
 * It has a note page for taking notes.
 '''
