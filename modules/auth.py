@@ -3,15 +3,17 @@
 
 import streamlit as st
 import streamlit_authenticator as stauth
+from modules.deta import get_config_from_deta
 
 
 def get_auth():
+    config = get_config_from_deta()
     return stauth.Authenticate(
-        dict(st.secrets['credentials']),
-        st.secrets['cookie']['name'],
-        st.secrets['cookie']['key'],
-        st.secrets['cookie']['expiry_days'],
-        st.secrets['preauthorized']
+        config['credentials'],
+        config['cookie']['name'],
+        config['cookie']['key'],
+        config['cookie']['expiry_days'],
+        config['preauthorized']
     )
 
 
@@ -30,8 +32,8 @@ def get_login(authenticator):
 
 def get_register(authenticator):
     try:
-        if authenticator.register_user('Register user', preauthorization=False):
-            pass  # st.success('User registered successfully')
+        if authenticator.register_user('Register user', 'main', preauthorization=False):
+            pass
     except Exception as e:
         st.error(e)
 
