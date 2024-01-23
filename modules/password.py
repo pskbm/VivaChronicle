@@ -14,9 +14,6 @@ def spacer(height: int = 30):
 if 'pw' not in st.session_state:
     st.session_state.pw = pwgenerator.generate()
 
-if 'secret_data' not in st.session_state:
-    st.session_state.secret_data = []
-
 
 def save_pass_cb():
     st.session_state.secret_data.append(
@@ -50,6 +47,9 @@ def get_password_generator():
 
 
 def get_credential_vault():
+    if 'secret_data' not in st.session_state:
+        st.session_state.secret_data = []
+
     holder = st.empty()
 
     # Input form
