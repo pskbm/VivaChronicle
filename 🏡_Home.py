@@ -1,5 +1,6 @@
 import streamlit as st
 from modules.home import CONTENT
+from modules.deta import CONFIG_FN, init_deta_drive
 
 
 st.set_page_config(
@@ -14,6 +15,17 @@ st.set_page_config(
 
 
 def main():
+    # =========================================================================
+    # Copy the local config file config.yaml to Deta space first.
+    # Be sure the config.yaml and main app file location is the same.
+    upload_local_config_to_deta = False
+    if upload_local_config_to_deta:
+        drive = init_deta_drive()
+        fp = open(CONFIG_FN)
+        drive.put(CONFIG_FN, data=fp)
+        fp.close()
+    # =========================================================================
+
     st.title('Home')
     st.markdown(CONTENT)
 
