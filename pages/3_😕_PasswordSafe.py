@@ -11,6 +11,9 @@ from modules.auth import get_auth, get_login
 from passwordgenerator import pwgenerator
 
 
+if 'authentication_status' not in st.session_state:
+    st.session_state.authentication_status = None
+
 if 'pw' not in st.session_state:
     st.session_state.pw = pwgenerator.generate()
 
@@ -22,8 +25,7 @@ with st.container(border=True):
     get_password_generator()
 
 
-if 'authentication_status' not in st.session_state or st.session_state.authentication_status is None:
-    st.error('Log in to access the password manager')
+if st.session_state.authentication_status is None:
     authenticator = get_auth()
     get_login(authenticator)
 
