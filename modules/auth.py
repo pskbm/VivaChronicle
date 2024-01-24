@@ -49,16 +49,19 @@ def get_logout(authenticator):
 
 
 def get_forgot_password(authenticator):
-    try:
-        username_of_forgotten_password, email_of_forgotten_password, new_random_password = authenticator.forgot_password('Forgot password')
-        if username_of_forgotten_password:
-            # Here you can access the forgotten password. It can also get the email and random password.
-            # This random password can be sent to the user via email using email services.
-            # This needs to be implemented. One email service that you can use is courier.
-            st.success('Successfully get the user info.')
-            # st.write(f'Your new password is {new_random_password}. Keep it and update it.')
-        else:
-            st.error('Username not found')
-    except Exception as e:
-        st.error(e)
-    
+    if not st.session_state["authentication_status"]:
+        try:
+            (username_of_forgotten_password,
+            email_of_forgotten_password,
+            new_random_password) = authenticator.forgot_password('Forgot password')
+            if username_of_forgotten_password:
+                # Here you can access the forgotten password. It can also get the email and random password.
+                # This random password can be sent to the user via email using email services.
+                # This needs to be implemented. One email service that you can use is courier.
+                st.success('Successfully get the user info.')
+                # st.write(f'Your new password is {new_random_password}. Keep it and update it.')
+            else:
+                st.error('Sorry username is not found.')
+        except Exception as e:
+            st.error(e)
+        
