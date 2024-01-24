@@ -12,7 +12,7 @@ from yaml.loader import SafeLoader
 from deta import Deta
 
 
-DRIVE_NAME = 'viva_chronicle_drive'
+DRIVE_NAME = st.secrets['DETA_DRIVE_NAME']
 CONFIG_FN = 'config.yaml'
 
 
